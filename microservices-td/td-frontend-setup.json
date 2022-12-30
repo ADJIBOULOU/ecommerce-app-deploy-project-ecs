@@ -1,0 +1,38 @@
+{
+    "taskRoleArn": "arn:aws:iam::007350209865:role/ecs-project-cluster-ECSTaskExecutionRole-GQ20J37G817L",
+    "executionRoleArn": "arn:aws:iam::007350209865:role/ecs-project-cluster-ECSTaskExecutionRole-GQ20J37G817L",
+    "containerDefinitions": [
+      {
+        "environment": [
+          {
+            "name": "PRODUCT_HOST",
+            "value": "<<productapp-host>>:9001"
+          },
+          {
+            "name": "OPERA_HOST",
+            "value": "<<paymentapp-host>>:9002"
+          },
+          {
+            "name": "PORT",
+            "value": "9000"
+          }
+        ],
+        "memoryReservation": 128,
+        "image": "awanmbandi/frontendapp:latest",
+        "essential": true,
+        "portMappings": [
+          {
+            "hostPort": 0,
+            "protocol": "tcp",
+            "containerPort": 9000
+          }
+        ],
+        "name": "musicbox"
+      }
+    ],
+    "family": "td-musicbox",
+    "requiresCompatibilities": [
+      "EC2"
+    ],
+    "networkMode": "bridge"
+  }
